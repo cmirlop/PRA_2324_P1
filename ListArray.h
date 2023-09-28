@@ -2,15 +2,18 @@
 #include <iostream>
 #include <exception>
 template <typename T>
+
+
+
 class ListArray : public List<T>{
 	private:
 		T* arr;
 		int max;
 		int n;
-		static const int MINSIZE;
+		static int const MINSIZE=2;
 		
 		void resize( int new_size){
-			T* newarr = new ListArray[new_size]; //Creamos nuevo array
+			T* newarr = new T[new_size]; //Creamos nuevo array
 			if(new_size < n){
 				throw "No se puede";
 			}
@@ -29,22 +32,26 @@ class ListArray : public List<T>{
 	public:
 		//Metodos heredados y que hay que sobreescribir
 		void insert(int pos, T e) override{
+			if(pos<0||pos>size()){
+				throw std::out_of_range("Posicion invalida");
+			}
 			if(size()==max){
+			
 				resize(size()*2);
 				max=size()*2;
 			}
 			
 			
-			if(pos==1){
+			if(pos==0){
 				prepend(e);
 			
 			}else if(pos==size()){
 				append(e);
 			}else{
-				for(int x=size();x>=pos;x--){
+				for(int x=size();x>pos;x--){
 					arr[x]=arr[x-1];
 				}
-				arr[pos-1]=e;
+				arr[pos]=e;
 				n++;
 			
 			}
@@ -77,13 +84,13 @@ class ListArray : public List<T>{
 		
 		}
 		T remove(int pos) override{
-			if(pos> (size()-1)){
+			if(pos> (size()-1)||pos<0){
 				throw std::out_of_range("fuera de rango");
 			} else {
 				
 				T x=arr[pos];
 				
-				delete arr[pos];
+				
 				if(pos<(max-1) && pos<size()-1){
 					for(int y=pos;y<size()-1;y++){
 						arr[y]=arr[y+1];
@@ -91,24 +98,25 @@ class ListArray : public List<T>{
 					}
 				
 				}
+				
 				n--;
 				return x; 
 			}
 		}
 	
 		T get(int pos) override{
-			if(pos > (size()-1)){
+			if(pos > (size()-1)||pos<0){
 				throw std::out_of_range("fuera de rango");
 			
 			}else{
-				return arr[pos-1];
+				return arr[pos];
 		
 			}
 		}
 
 		int search( T e) override{
 		
-			for(int x=0;x<(size()-1);x++){
+			for(int x=0;x<size();x++){
 				if(arr[x]==e){
 					return x;
 				}
@@ -134,19 +142,19 @@ class ListArray : public List<T>{
 	
 		//Metodos de la clase ListArray
 		ListArray(){
-			MINSIZE=2;
-			arr = new ListArray[MINSIZE];  // Constructor 
+			arr = new T[MINSIZE];  // Constructor 
 			max=MINSIZE;
 			n=0;
 		}
 
 
 		~ListArray(){
+			n=0;
 			delete[] arr;
 		}
 
 
-		T operator[](int pos){
+		T& operator[](int pos){
 			if(pos > n || pos<0 ){
 				throw std::out_of_range("fuera de rango");		
 			
@@ -156,12 +164,15 @@ class ListArray : public List<T>{
 		
 		}
 
-		friend std::ostream& operator<<(std::ostream &out, const ListArray<T> &list){
-			for(int x=0; x<size();x++){
+		friend std::ostream& operator<<(std::ostream &out,ListArray<T> &list){
+			out<< "List --> ["<<std::endl;
+			for(int x=0;x<list.size();x++){
 			
 				out<<list[x]<<std::endl;
 			
 			}
+
+			out<<"]"<<std::endl;
 			return out;	
 		}
 
@@ -170,3 +181,4 @@ class ListArray : public List<T>{
 
 
 };
+
