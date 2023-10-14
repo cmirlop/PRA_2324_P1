@@ -41,7 +41,7 @@ class Point2D{
 
 		friend std::ostream& operator<<(std::ostream &out, const Point2D &p){
 			
-			out << "(" << p.x << ", " << p.y << ")" << std::endl;
+			out << "(" << p.x << ", " << p.y << ")";
 			return out;
 		
 		}
