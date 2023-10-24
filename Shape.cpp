@@ -1,5 +1,5 @@
 #include "Shape.h"
-
+#include <string>
 Shape::Shape(){
 	color="red";
 }
@@ -26,3 +26,4 @@ void Shape::set_color(std::string c){
 	color = c;	
 		
 }
+

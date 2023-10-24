@@ -1,3 +1,5 @@
+#ifndef POINT2D_H
+#define POINT2D_H
 #include <iostream>
 #include <cmath>
 
@@ -18,10 +20,17 @@ class Point2D{
 			return sqrt(pow(a.x - b.x,2)+pow(a.y - b.y,2));
 		
 		}
+/*		Point2D& operator=(const Point2D &a){
+			this->x = a.x;
+			this->y = a.y;
+			return *this;
+		
+		
+				}*/
 
 		friend bool operator==(const Point2D &a, const Point2D &b){
 		
-			if(a.x == b.x && a.y == a.y){
+			if(a.x == b.x && a.y == b.y){
 			
 				return true;
 			}
@@ -50,3 +59,4 @@ class Point2D{
 
 
 };
+#endif
