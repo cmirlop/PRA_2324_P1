@@ -64,55 +64,50 @@ class ListLinked:public List<T>{
 			if(pos<0 || pos >(size()-1)){
 				throw std::out_of_range("Posicion invalida");
 			
-			}
+			} else {
 
-			Node<T>* aux = first;
-			Node<T>* prev = nullptr;
-			for(int x=0; x<size();x++){
-				if(x==pos&&pos==0){
+				Node<T>* aux = first;
+				Node<T>* prev = nullptr;
+				for(int x=0; x<size();x++){
+					if(x==pos&&pos==0){
 					
-					first = first->next;
-					n--;
-					return aux->data;
+						first = first->next;
+						n--;
+						return aux->data;
 
-				}else if(x==pos && pos ==size()-1){
+					}else if(x==pos && pos ==size()-1){
 					
-					prev->next =nullptr;
-					n--;
-					return aux->data;
+						prev->next =nullptr;
+						n--;
+						return aux->data;
 
-				}else if(x==pos){
+					}else if(x==pos){
 					
-					prev->next = aux->next;
-					n--;
-					return aux->data;
+						prev->next = aux->next;
+						n--;
+						return aux->data;
 					
+					}
+					prev=aux;
+					aux = aux->next;
 				}
-				prev=aux;
-				aux = aux->next;
-				
-				
-			
 			}
-
-			return -1;
 		}
 
 		virtual T get(int pos){
-			if(pos>n){
+			if(pos>size()-1 || pos < 0){
 				throw std::out_of_range("Posicion invalida");
-			}
-			Node<T>* aux=first;
-			for( int x=0;x<n;x++){
-				if(x==pos){
+			}else{
+				Node<T>* aux=first;
+				for( int x=0;x<n;x++){
+					if(x==pos){
 
-					return aux->data;
-				}
-				aux=aux->next;
+						return aux->data;
+					}
+					aux=aux->next;
 			
+				}
 			}
-		
-			return -1;
 		
 		}
 
