@@ -42,7 +42,7 @@ class Circle : public Shape{
 		}
 		friend std::ostream& operator<<(std::ostream &out, const Circle &c){
 		
-			out<<" color = "<< c.getcolor()<<" Punto"<< c.center <<" de radio " <<c.radius << std::endl;
+			out<<"Ciruclo de color = "<< c.getcolor()<<" Punto:"<< c.center <<" de radio: " <<c.radius << std::endl;
 			return out;
 		
 		}
@@ -66,7 +66,7 @@ class Circle : public Shape{
 		
 		}
 		 void print()override{
-			std::cout<< center << radius << Shape::getcolor() << std::endl; 
+			std::cout<<"Ciruclo de color = "<< Shape::getcolor()<<" Punto:"<< center <<" de radio: " <<radius << std::endl;
 		
 		}
 };

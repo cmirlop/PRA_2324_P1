@@ -63,7 +63,7 @@ class Rectangle : public Shape{
 		}
 		void print()override{
 		
-			std::cout<< "Color: "<< Shape::getcolor() <<  "Vertices" << get_vertex(0) << get_vertex(1) << get_vertex(2) << get_vertex(3) << std::endl;
+			std::cout<< "Rectanfulo de Color: "<< Shape::getcolor() <<  "con Vertices" << get_vertex(0) << get_vertex(1) << get_vertex(2) << get_vertex(3) << std::endl;
 		
 		}
 				

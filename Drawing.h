@@ -1,10 +1,13 @@
 #ifndef DRAWING_H
 #define DRAWING_H
 
-#include "List.h" 
+#include "ListLinked.h" 
 #include "Shape.h"
-template <typename T>
-class Drawing : public List<T>, Shape{
+#include "Circle.h"
+#include "Rectangle.h"
+#include "Square.h"
+//template <typename T>
+class Drawing{
 	private:
 		List<Shape*>* shapes;
 	public:
