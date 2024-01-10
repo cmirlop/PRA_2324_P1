@@ -64,34 +64,34 @@ class ListLinked:public List<T>{
 			if(pos<0 || pos >(size()-1)){
 				throw std::out_of_range("Posicion invalida");
 			
-			} else {
+			} 
 
-				Node<T>* aux = first;
-				Node<T>* prev = nullptr;
-				for(int x=0; x<size();x++){
-					if(x==pos&&pos==0){
-					
-						first = first->next;
-						n--;
-						return aux->data;
+			Node<T>* aux = first;
+			Node<T>* prev = nullptr;
+			for(int x=0; x<size();x++){
+				if(x==pos&&pos==0){
+				
+					first = first->next;
+					n--;
+					return aux->data;
 
-					}else if(x==pos && pos ==size()-1){
-					
-						prev->next =nullptr;
-						n--;
-						return aux->data;
+				}else if(x==pos && pos ==size()-1){
+				
+					prev->next =nullptr;
+					n--;
+					return aux->data;
 
-					}else if(x==pos){
+				}else if(x==pos){
 					
-						prev->next = aux->next;
-						n--;
-						return aux->data;
+					prev->next = aux->next;
+					n--;
+					return aux->data;
 					
-					}
+				}
 					prev=aux;
 					aux = aux->next;
-				}
 			}
+			
 		}
 
 		virtual T get(int pos){
@@ -146,13 +146,15 @@ class ListLinked:public List<T>{
 			n=0;
 		}
 		~ListLinked(){
-			Node<T>* aux=first->next;
-			while(aux!=nullptr){
+			/*Node<T>* aux=first->next;
+			while(n>0){
+				n--;
 				delete first;
 				first = aux;
 				aux = aux->next;
+				n--;
 			}
-
+*/
 			delete first;
 			
 		}
